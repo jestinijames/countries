@@ -1,8 +1,4 @@
-import {
-  LucideIcon,
-  Earth,
-  ArrowRight,
-} from 'lucide-react';
+import { LucideIcon, Earth, ArrowRight } from "lucide-react";
 
 export type Icon = LucideIcon;
 

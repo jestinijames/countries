@@ -1,21 +1,24 @@
-import React from 'react'
 import Image from "next/image";
 import Link from "next/link";
-import { Country } from '@/types'
+import React from "react";
+
 import { formatPopulation } from "@/lib/utils";
 
-const CountryCard = ({country}: {country: Country}) => {
+import { Country } from "@/types";
+import { ArrowRight } from "lucide-react";
+
+const CountryCard = ({ country }: { country: Country }) => {
   return (
     <li>
       <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-md">
         <Link href={`/countries/${country.cca2}`} passHref>
           <div className="w-full h-[200px] relative">
             {/* Ensure the image fits uniformly in the container */}
-            <Image 
-              fill={true} 
+            <Image
+              fill={true}
               className="rounded-t-lg object-cover object-center" // Use object-cover and object-center to maintain aspect ratio and crop if needed
-              src={country.flags.svg} 
-              alt={country.name.common} 
+              src={country.flags.svg}
+              alt={country.name.common}
             />
           </div>
         </Link>
@@ -47,26 +50,12 @@ const CountryCard = ({country}: {country: Country}) => {
             className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Read more
-            <svg
-              className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 10"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M1 5h12m0 0L9 1m4 4L9 9"
-              />
-            </svg>
+            <ArrowRight />
           </Link>
         </div>
       </div>
     </li>
   );
-}
+};
 
 export default CountryCard;

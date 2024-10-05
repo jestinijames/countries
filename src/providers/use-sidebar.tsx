@@ -1,9 +1,11 @@
-'use client';
+"use client";
 import { SidebarContextProps } from "@/types";
 import { createContext, ReactNode, useContext, useState } from "react";
 
 // Create a context with the default value
-const SidebarContext = createContext<SidebarContextProps | undefined>(undefined);
+const SidebarContext = createContext<SidebarContextProps | undefined>(
+  undefined
+);
 
 // Create a provider component
 export const SidebarProvider = ({ children }: { children: ReactNode }) => {
@@ -19,12 +21,11 @@ export const SidebarProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-
 // Create a custom hook to use the context
 export const useSidebarContext = () => {
-    const context = useContext(SidebarContext);
-    if (!context) {
-      throw new Error('useSidebarContext must be used within a SidebarProvider');
-    }
-    return context;
-  };
+  const context = useContext(SidebarContext);
+  if (!context) {
+    throw new Error("useSidebarContext must be used within a SidebarProvider");
+  }
+  return context;
+};
