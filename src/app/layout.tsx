@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/providers/theme-provider";
 
 import { Toaster } from '@/components/ui/toaster';
 import { SidebarProvider } from "@/providers/use-sidebar";
+import CountryProvider from "@/providers/country-provider";
 
 export const metadata: Metadata = {
   title: "Country List",
@@ -31,9 +32,13 @@ export default function RootLayout({
               enableSystem
               disableTransitionOnChange
             >
+              
                <SidebarProvider>
+          
         {children}
+    
         </SidebarProvider>
+        
         </ThemeProvider>
         <Toaster />
       </body>

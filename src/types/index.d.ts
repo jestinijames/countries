@@ -20,6 +20,24 @@ export type SidebarProps = {
   className?: string;
 };
 
+export interface ContextProps {
+  search: string;
+  region: string;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
+  setRegion: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface SortProps {
+  sort:string;
+  setSort:React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface ProviderProps {
+  children: React.ReactNode;
+}
+
+
+
 export type Country = {
     name: Name;
     tld?: string[];
@@ -57,6 +75,10 @@ export type Country = {
     capitalInfo: CapitalInfo;
     postalCode?: PostalCode;
   };
+
+  export interface CountryProps {
+    countries: Country[];
+  }
   
   export type CapitalInfo = {
     latlng?: number[];
