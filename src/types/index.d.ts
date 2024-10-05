@@ -13,6 +13,9 @@ export interface NavItem {
 export interface SidebarContextProps {
   isMinimized: boolean;
   toggle: () => void;
+  handleHeadingChange: (title: string, desc: string) => void;
+  heading: string;
+  description: string;
 }
 
 export type SidebarProps = {

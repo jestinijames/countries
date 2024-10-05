@@ -11,7 +11,7 @@ const CountryCard = ({ country }: { country: Country }) => {
   return (
     <li>
       <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-md">
-        <Link href={`/countries/${country.cca2}`} passHref>
+        <Link href={`/${country.cca2}`} passHref>
           <div className="w-full h-[200px] relative">
             {/* Ensure the image fits uniformly in the container */}
             <Image
@@ -45,7 +45,7 @@ const CountryCard = ({ country }: { country: Country }) => {
             )}
           </div>
           <Link
-            href={`/countries/${country.cca2}`}
+            href={`/${country.cca2}`}
             passHref
             className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >

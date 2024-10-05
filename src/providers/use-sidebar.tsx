@@ -11,11 +11,27 @@ const SidebarContext = createContext<SidebarContextProps | undefined>(
 export const SidebarProvider = ({ children }: { children: ReactNode }) => {
   const [isMinimized, setIsMinimized] = useState(false);
 
+  const [heading, setHeading] = useState("Countries List");
+  const [description, setDescription] = useState("Manage Countries");
+
   // Toggle function to update the state
   const toggle = () => setIsMinimized((prev) => !prev);
 
+  const handleHeadingChange = (title: string, desc: string) => {
+    setHeading(title);
+    setDescription(desc);
+  };
+
   return (
-    <SidebarContext.Provider value={{ isMinimized, toggle }}>
+    <SidebarContext.Provider
+      value={{
+        isMinimized,
+        toggle,
+        handleHeadingChange,
+        heading,
+        description,
+      }}
+    >
       {children}
     </SidebarContext.Provider>
   );
