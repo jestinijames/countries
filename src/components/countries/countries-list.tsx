@@ -20,6 +20,7 @@ const CountriesList = () => {
     setSearchTerm,
     setRegion,
     setSort,
+    resetFilters,
     loadMoreCountries,
   } = useCountriesContext();
 
@@ -58,6 +59,9 @@ const CountriesList = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <SelectRegion region={region} setRegion={setRegion} />
+          {(region !== "All" || searchTerm !== "" || sort !== "ascending") && (
+            <Button onClick={resetFilters}>Reset</Button>
+          )}
         </div>
         <PopulationSort sort={sort} setSort={setSort} />
       </div>
