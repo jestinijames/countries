@@ -1,23 +1,10 @@
-"use client";
-
-import React, { useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import { Country } from "@/types";
 import { formatPopulation } from "@/lib/utils";
-import { useSidebarContext } from "@/providers/use-sidebar";
 const CountryDetails = ({ country }: { country: Country }) => {
-  const { handleHeadingChange } = useSidebarContext();
-
-  // Use useEffect to update the heading and description
-  useEffect(() => {
-    // Call handleHeadingChange only when the country prop changes
-    handleHeadingChange(country.name.common, "");
-  }, [country, handleHeadingChange]); // Add country and handleHeadingChange to the dependency array
-
   return (
     <div className="mt-8 w-11/12 mx-auto">
-      {/* <BackButton /> */}
-
       <div className="mt-16 md:grid md:grid-cols-2 md:items-center md:gap-16">
         <Image
           src={country.flags.svg}

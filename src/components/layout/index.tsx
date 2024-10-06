@@ -1,18 +1,24 @@
 "use client";
-import React, { memo, ReactNode } from "react";
-import { Heading } from "@/components/ui/heading";
-import { Separator } from "@/components/ui/separator";
 import Header from "@/components/layout/header";
 import Sidebar from "@/components/layout/sidebar";
-import { useSidebarContext } from "@/providers/use-sidebar";
+import { Heading } from "@/components/ui/heading";
+import { Separator } from "@/components/ui/separator";
+import React from "react";
+import { memo, ReactNode } from "react";
 
 // Memoize these components to avoid unnecessary re-renders
 const MemoizedHeader = memo(Header);
 const MemoizedSidebar = memo(Sidebar);
 
-const LayoutWrapper = ({ children }: { children: ReactNode }) => {
-  const { heading, description } = useSidebarContext();
-
+const LayoutWrapper = ({
+  children,
+  heading,
+  description,
+}: {
+  children: ReactNode;
+  heading: string;
+  description: string;
+}) => {
   return (
     <>
       <MemoizedHeader />

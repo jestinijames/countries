@@ -13,14 +13,26 @@ export interface NavItem {
 export interface SidebarContextProps {
   isMinimized: boolean;
   toggle: () => void;
-  handleHeadingChange: (title: string, desc: string) => void;
-  heading: string;
-  description: string;
 }
 
 export type SidebarProps = {
   className?: string;
 };
+
+export interface CountriesContextType {
+  countries: Country[];
+  setCountries: Dispatch<SetStateAction<Country[]>>;
+  filteredCountries: Country[];
+  searchTerm: string;
+  region: string;
+  sort: string;
+  visibleCount: number;
+  setSearchTerm: (term: string) => void;
+  setRegion: eact.Dispatch<React.SetStateAction<string>>;
+  setSort: eact.Dispatch<React.SetStateAction<string>>;
+  loadMoreCountries: () => void;
+  resetFilters: () => void;
+}
 
 export interface ContextProps {
   search: string;

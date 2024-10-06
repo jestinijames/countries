@@ -2,9 +2,9 @@ import React, { memo } from "react";
 import CountriesList from "@/components/countries/countries-list";
 import { Country } from "@/types";
 import LayoutWrapper from "@/components/layout";
+import { CountriesProvider } from "@/providers/countries-context";
 
 // Memoize these components to avoid unnecessary re-renders
-
 const MemoizedCountriesList = memo(CountriesList);
 
 export default async function HomePage() {
@@ -15,9 +15,14 @@ export default async function HomePage() {
 
   return (
     <>
-      <LayoutWrapper>
-        <MemoizedCountriesList countries={countries} />
-      </LayoutWrapper>
+      <CountriesProvider initialCountries={countries}>
+        <LayoutWrapper
+          heading="Country List"
+          description={`Total: ${countries.length}`}
+        >
+          <MemoizedCountriesList />
+        </LayoutWrapper>
+      </CountriesProvider>
     </>
   );
 }

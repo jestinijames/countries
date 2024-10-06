@@ -1,6 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-import { useState, useEffect, useRef } from "react";
 
 import { Input } from "@/components/ui/input";
 
@@ -9,74 +7,23 @@ import PopulationSort from "./population-sort";
 import SelectRegion from "./select-region";
 import { Separator } from "@/components/ui/separator";
 
-import { Country, CountryProps } from "@/types";
+import { Country } from "@/types";
+import { useCountriesContext } from "@/providers/countries-context";
+import { Button } from "@/components/custom/button";
 
-const CountriesList = ({ countries }: CountryProps) => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [region, setRegion] = useState("All");
-  const [sort, setSort] = useState("ascending");
-  const [visibleCount, setVisibleCount] = useState(9); // Number of countries to display initially
-  const loadMoreRef = useRef(null); // Reference for the "load more" trigger
+const CountriesList = () => {
+  const {
+    filteredCountries,
+    searchTerm,
+    region,
+    sort,
+    setSearchTerm,
+    setRegion,
+    setSort,
+    loadMoreCountries,
+  } = useCountriesContext();
 
-  // Filter countries by region
-  const countriesByRegion = countries.filter((country) => {
-    if (region === "All") {
-      return true;
-    }
-    return country.region === region;
-  });
-
-  // Filter countries by search term to match name or capital
-  const filteredCountries = countriesByRegion.filter((country) => {
-    if (searchTerm === "") {
-      return true;
-    }
-
-    const searchTermLower = searchTerm.toLowerCase();
-    const matchesName = country.name.common
-      .toLowerCase()
-      .includes(searchTermLower);
-    const matchesCapital = country.capital?.some((cap) =>
-      cap.toLowerCase().includes(searchTermLower)
-    ); // Check if any capital matches
-
-    return matchesName || matchesCapital;
-  });
-
-  // Sort countries by population based on the sort state (ascending or descending)
-  const sortedCountries = [...filteredCountries].sort((a, b) => {
-    if (sort === "ascending") {
-      return a.population - b.population; // Sort by ascending population
-    }
-    return b.population - a.population; // Sort by descending population
-  });
-
-  // Get only the visible countries based on the current visibleCount
-  const visibleCountries = sortedCountries.slice(0, visibleCount);
-
-  // Infinite Scroll: Load more countries when the user scrolls to the bottom
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setVisibleCount((prevCount) => prevCount + 9); // Load 9 more countries when the bottom is reached
-        }
-      },
-      { threshold: 1.0 }
-    );
-
-    if (loadMoreRef.current) {
-      observer.observe(loadMoreRef.current);
-    }
-
-    return () => {
-      if (loadMoreRef.current) {
-        observer.unobserve(loadMoreRef.current);
-      }
-    };
-  }, [loadMoreRef]);
-
-  if (visibleCountries.length === 0) {
+  if (filteredCountries.length === 0) {
     return (
       <section className="flex flex-col gap-y-4">
         {/* Filters */}
@@ -117,12 +64,14 @@ const CountriesList = ({ countries }: CountryProps) => {
       {/* Content */}
       <Separator className="shadow" />
       <ul className="faded-bottom no-scrollbar grid gap-4 overflow-auto pb-16 pt-4 md:grid-cols-2 lg:grid-cols-3">
-        {visibleCountries.map((country: Country) => (
+        {filteredCountries.map((country: Country) => (
           <CountryCard key={country.cca2} country={country} />
         ))}
       </ul>
       {/* Load more trigger */}
-      <div ref={loadMoreRef} className="h-4" />
+      <div className="flex justify-center items-center">
+        <Button onClick={loadMoreCountries}>Load more</Button>
+      </div>
     </section>
   );
 };
