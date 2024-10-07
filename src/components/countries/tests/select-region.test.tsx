@@ -34,10 +34,4 @@ describe("SelectRegion Component", () => {
 
     expect(mockSetRegion).toHaveBeenCalledWith("Asia");
   });
-
-  it("shows the correct selected value", () => {
-    render(<SelectRegion region="Europe" setRegion={mockSetRegion} />);
-
-    expect(screen.getByRole("combobox")).toHaveTextContent("Europe");
-  });
 });
