@@ -32,6 +32,8 @@ export interface CountriesContextType {
   setSort: eact.Dispatch<React.SetStateAction<string>>;
   loadMoreCountries: () => void;
   resetFilters: () => void;
+  loading: boolean;
+  error: boolean;
 }
 
 export interface ContextProps {

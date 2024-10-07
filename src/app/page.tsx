@@ -9,9 +9,12 @@ const MemoizedCountriesList = memo(CountriesList);
 
 export default async function HomePage() {
   // No changes here for fetching data
-  const countries = (await fetch("https://restcountries.com/v3.1/all").then(
-    (res) => res.json()
-  )) as Country[];
+
+  const countries = (await fetch("https://restcountries.com/v3.1/all", {
+    headers: {
+      "Cache-Control": "max-age=86400", // Cache for 1 day
+    },
+  }).then((res) => res.json())) as Country[];
 
   return (
     <>

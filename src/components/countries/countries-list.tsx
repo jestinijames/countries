@@ -22,7 +22,25 @@ const CountriesList = () => {
     setSort,
     resetFilters,
     loadMoreCountries,
+    loading,
+    error,
   } = useCountriesContext();
+
+  if (loading) {
+    return (
+      <section className="flex flex-col gap-y-4">
+        <p className="flex justify-center items-center">Loading countries...</p>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="flex flex-col gap-y-4">
+        <p className="flex justify-center items-center text-red-500">{error}</p>
+      </section>
+    );
+  }
 
   if (filteredCountries.length === 0) {
     return (

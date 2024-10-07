@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a Countries List project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
@@ -18,17 +18,34 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
 
-## Learn More
+## Requirements Met
 
-To learn more about Next.js, take a look at the following resources:
+Below are the requirements that were met in building this project:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Fetch country data from the provided REST API endpoint.
+- Implement proper error handling and loading states.
+- Create a TypeScript interface for the country data object.
+- Implement a function to sort countries by population (ascending and descending).
+- Create a function to filter countries by region.
+- Implement a search functionality to find countries by name or capital.
+- Create a responsive grid layout to display country cards.
+- Each card should show the country's flag, name, capital, population, and region.
+- Implement a detailed view for each country when clicked, showing additional information like currencies, languages, and time zones.
+- Use React hooks for local state management.
+- Implement context API for global state management.
+- Implement lazy loading for country cards as the user scrolls.
+- Use Next.js Image component for optimized image loading.
+- Implement memoization where appropriate to prevent unnecessary re-renders.
+- Create a custom hook for fetching and caching API data.
+- Implement server-side rendering (SSR) for initial page load.
+- Add dark mode toggle with persistent user preference.
+- Write unit tests for utility functions
+- Create component tests using React Testing Library.
+- Implement at least one integration test for the main page.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Unmet Requirements. (To be met in the future)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Implement at least one integration test for the main page.
+- Implement a feature to compare two countries side by side.
+- Add a visualization (e.g., a map or chart) using a library of your choice.
+- Create a CI/CD pipeline using GitHub Actions or a similar tool.
