@@ -33,7 +33,7 @@ export interface CountriesContextType {
   loadMoreCountries: () => void;
   resetFilters: () => void;
   loading: boolean;
-  error: boolean;
+  error: string | null;
 }
 
 export interface ContextProps {

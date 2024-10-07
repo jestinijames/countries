@@ -45,7 +45,6 @@ Below are the requirements that were met in building this project:
 
 ## Unmet Requirements. (To be met in the future)
 
-- Implement at least one integration test for the main page.
 - Implement a feature to compare two countries side by side.
 - Add a visualization (e.g., a map or chart) using a library of your choice.
 - Create a CI/CD pipeline using GitHub Actions or a similar tool.
